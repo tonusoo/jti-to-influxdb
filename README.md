@@ -159,4 +159,4 @@ martin@lab-svr:~$
 ```
 
 One can easily link Grafana to InfluxDB. Example:
-![Grafana bps graph](https://github.com/jumation/neigh/blob/master/grafana_bps_graph.png)
+![Grafana bps graph](https://github.com/tonusoo/jti-to-influxdb/blob/master/grafana_bps_graph.png)
