@@ -1,6 +1,6 @@
 # Push Junos Telemetry Interface native sensors data to InfluxDB
 
-[jti-to-influxdb.py](https://github.com/tonusoo/jti-to-influxdb/blob/master/jti-to-influxdb.py) is a small script for lab usage which reads [Junos Telemetry Interface native sensors](https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-telemetry-interface-export-format-understanding.html)(JTI) data and writes results to InfluxDB time series database.
+[jti-to-influxdb.py](https://github.com/tonusoo/jti-to-influxdb/blob/master/jti-to-influxdb.py) is a small script for lab usage which reads [Junos Telemetry Interface native sensors](https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-telemetry-interface-export-format-understanding.html)(JTI) data for logical interface statistics and writes ingress/egress byte counters values to InfluxDB time series database.
 
 
 ## Overview
