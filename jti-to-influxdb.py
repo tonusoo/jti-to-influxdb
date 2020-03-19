@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
 # Title               : jti-to-influxdb.py
-# Last modified date  : 12.03.2020
+# Last modified date  : 19.03.2020
 # Author              : Martin Tonusoo
 # Description         : Script reads Junos Telemetry Interface native sensors
 #                       data and writes results to InfluxDB time series
 #                       database.
 # Options             : None
-# Notes               : Requires python3-protobuf Python package and Junos
-#                       Telemetry Interface Data Model Files package.
-#                       Latter is available for registered users from
-#                       https://www.juniper.net/support/downloads/
+# Notes               : Requires protobuf Python package and Junos
+#                       Telemetry Interface data model .proto files available
+#                       for registered users from Juniper Downloads portal or
+#                       from https://github.com/Juniper/telemetry
 
 import socket
 import logical_port_pb2
