@@ -148,21 +148,32 @@ Setting up protobuf-compiler (2.6.1-1.3) ...
 (jti-to-influxdb) martin@lab-svr:~/jti-to-influxdb$ ./jti-to-influxdb.py
 ```
 
+..or using Docker:
+```
+martin@lab-svr:~$ git clone https://github.com/tonusoo/jti-to-influxdb -q
+martin@lab-svr:~$ sudo docker build -t jti-to-influxdb jti-to-influxdb/
+/* output removed for brevity */
+martin@lab-svr:~$ # host networking driver only works in Linux
+martin@lab-svr:~$ sudo docker run --rm --network host --name jti-test jti-to-influxdb
+```
+
 `jti-to-influxdb.py` will populate the InfluxDB `intstats` database `octets` measurement with `i_octets` and `o_octets` field values:
 
 ```
 martin@lab-svr:~$ influx -database="intstats" -execute "SELECT * FROM octets WHERE \"ifl\"='ge-0/0/1.88' AND time > now() - 20s"
 name: octets
-time                i_octets  ifl         o_octets
-----                --------  ---         --------
-1584101655000000000 733572730 ge-0/0/1.88 668732108
-1584101658000000000 733587190 ge-0/0/1.88 668746568
-1584101660000000000 733603096 ge-0/0/1.88 668762474
-1584101662000000000 733617556 ge-0/0/1.88 668776934
-1584101664000000000 733632016 ge-0/0/1.88 668791394
-1584101666000000000 733647968 ge-0/0/1.88 668807346
-1584101669000000000 733662428 ge-0/0/1.88 668821806
-1584101671000000000 733676888 ge-0/0/1.88 668836266
+time                hostname i_octets  ifl         ip        o_octets
+----                -------- --------  ---         --        --------
+1587331717000000000 PE1      183143676 ge-0/0/1.88 10.7.7.33 183032619
+1587331719000000000 PE1      183390585 ge-0/0/1.88 10.7.7.33 183279528
+1587331721000000000 PE1      183637494 ge-0/0/1.88 10.7.7.33 183526437
+1587331723000000000 PE1      184132773 ge-0/0/1.88 10.7.7.33 184021716
+1587331725000000000 PE1      184379682 ge-0/0/1.88 10.7.7.33 184268625
+1587331727000000000 PE1      184626591 ge-0/0/1.88 10.7.7.33 184515534
+1587331729000000000 PE1      184874961 ge-0/0/1.88 10.7.7.33 184763904
+1587331731000000000 PE1      185121870 ge-0/0/1.88 10.7.7.33 185010813
+1587331734000000000 PE1      185370240 ge-0/0/1.88 10.7.7.33 185259183
+1587331736000000000 PE1      185617149 ge-0/0/1.88 10.7.7.33 185506092
 martin@lab-svr:~$ 
 ```
 
