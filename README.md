@@ -148,9 +148,11 @@ Setting up protobuf-compiler (2.6.1-1.3) ...
 (jti-to-influxdb) martin@lab-svr:~/jti-to-influxdb$ ./jti-to-influxdb.py
 ```
 
-..or using Docker:
+.. or using Docker:
 ```
 martin@lab-svr:~$ git clone https://github.com/tonusoo/jti-to-influxdb -q
+martin@lab-svr:~$ # modify the script if needed, e.g change the InfluxDB port number
+martin@lab-svr:~$ vim jti-to-influxdb/jti-to-influxdb.py
 martin@lab-svr:~$ sudo docker build -t jti-to-influxdb jti-to-influxdb/
 /* output removed for brevity */
 martin@lab-svr:~$ # host networking driver only works in Linux
