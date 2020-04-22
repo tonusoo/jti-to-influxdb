@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Title               : jti-to-influxdb.py
-# Last modified date  : 20.04.2020
+# Last modified date  : 22.04.2020
 # Author              : Martin Tonusoo
 # Description         : Script reads Junos Telemetry Interface native sensors
 #                       data and writes results to InfluxDB time series
@@ -16,7 +16,6 @@ import sys
 import socket
 import logical_port_pb2
 import telemetry_top_pb2
-from datetime import datetime
 from influxdb import InfluxDBClient
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -40,8 +39,6 @@ def main():
             jnpr_ext = nt.enterprise.Extensions[telemetry_top_pb2.juniperNetworks]
             ports = jnpr_ext.Extensions[logical_port_pb2.jnprLogicalInterfaceExt]
 
-            current_time = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-
             # On vMX running Junos 18.2R1.9 the router requires a reboot for
             # new host-name to take effect. Ip is the "local-address" configured
             # under telemetry export profile and this changes immediately after
@@ -58,7 +55,6 @@ def main():
                             "hostname": hostname,
                             "ip": ip,
                         },
-                        "time": current_time,
                         "fields": {
                             "i_octets": port.ingress_stats.if_octets,
                             "o_octets": port.egress_stats.if_octets
